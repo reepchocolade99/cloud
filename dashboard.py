@@ -88,7 +88,7 @@ else:
 
 
 
-
+st.subheader(f'Clusters')
 node_options = sorted(available_nodes[selected_machine])
 selected_node = st.selectbox("Kies node:", node_options)
 
@@ -98,6 +98,13 @@ if os.path.exists(img_path):
     st.image(Image.open(img_path), caption=f'Clustering per node {selected_node}', use_column_width=True)
 else:
     st.warning(f"Afbeelding niet gevonden: {img_path}")
+
+clus_path = f"combined/Timeline/{selected_machine}/Timeline_clusters_{selected_node}.png"
+
+if os.path.exists(clus_path):
+    st.image(Image.open(clus_path), caption=f'Clustering per node {selected_node}', use_column_width=True)
+else:
+    st.warning(f"Image not found: {clus_path}")  
 
 st.header(f'Distribution of clusters')
 distribution = pd.read_csv(f'combined/clusters/outlier_{selected_machine}.csv')
