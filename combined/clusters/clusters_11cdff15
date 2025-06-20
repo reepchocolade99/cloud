@@ -1,0 +1,29 @@
+11cdff15
+
+=== Cluster 0 ===
+cpu_usage_percent: min=0.01, max=56.32, mean=1.14
+scaphandre_power_total_watts: min=35.88, max=103.55, mean=43.57
+ipmi_system_power_watts: min=64.00, max=252.00, mean=78.26
+rapl_power_total_watts: min=25.22, max=140.26, mean=44.77
+scaphandre_power_total_watts: min=35.88, max=103.55, mean=43.57
+
+=== Cluster 1 ===
+cpu_usage_percent: min=0.95, max=82.91, mean=51.21
+scaphandre_power_total_watts: min=143.89, max=667.73, mean=209.18
+ipmi_system_power_watts: min=76.00, max=333.33, mean=283.22
+rapl_power_total_watts: min=46.37, max=247.55, mean=209.17
+scaphandre_power_total_watts: min=143.89, max=667.73, mean=209.18
+
+=== Cluster 2 ===
+cpu_usage_percent: min=0.08, max=79.73, mean=46.59
+scaphandre_power_total_watts: min=37.13, max=59.07, mean=47.55
+ipmi_system_power_watts: min=67.33, max=349.33, mean=265.73
+rapl_power_total_watts: min=101.59, max=730.49, mean=196.64
+scaphandre_power_total_watts: min=37.13, max=59.07, mean=47.55
+
+=== Cluster 3 ===
+cpu_usage_percent: min=2.26, max=74.33, mean=21.68
+scaphandre_power_total_watts: min=61.88, max=187.15, mean=142.21
+ipmi_system_power_watts: min=110.67, max=255.33, mean=192.38
+rapl_power_total_watts: min=72.61, max=194.87, mean=142.23
+scaphandre_power_total_watts: min=61.88, max=187.15, mean=142.21
