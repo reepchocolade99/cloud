@@ -39,6 +39,13 @@ available_nodes = {
 
 
 st.header(f'Data-driven analyse')
+overview = f'combined/Statistics/summary_architectures.csv'
+if os.path.exists(overview):
+    view = pd.read_csv(overview, index_col=0)
+    st.subheader("Overview of the dataset")
+    st.bar_chart(view)
+else:
+    st.warning(f"Outliers data niet gevonden voor {selected_machine}")
 selected_machine = st.selectbox("Choose the machine type you want to analyse:", dataset_names)
 
 st.subheader(f'ipmi_system_power_watts described (Watt)')
@@ -54,7 +61,7 @@ img_path = f"combined/boxplots/{selected_machine}/{selected_node}.png"
 
 if os.path.exists(img_path):
     st.subheader(f'Boxplot for {selected_node}')
-    st.image(Image.open(img_path), caption=f'Boxplot per node {selected_node}', use_column_width=True)
+    st.image(Image.open(img_path), caption=f'Boxplot per node {selected_node}', use_container_width=True)
 else:
     st.warning(f"Image not found: {img_path}")
 
@@ -73,7 +80,7 @@ power_img_path = f"combined/Statistics/power_distribution_per_node_{selected_mac
 if os.path.exists(power_img_path):
     power_img = Image.open(power_img_path)
     st.subheader("Power distribution per node")
-    st.image(power_img, use_column_width=True)
+    st.image(power_img, use_container_width=True)
 else:
     st.warning(f"Power distribution plot niet gevonden voor {selected_machine}")
 
@@ -82,7 +89,7 @@ pca_img_path = f"combined/pca/plot_hourly_nodes_{selected_machine}.png"
 if os.path.exists(pca_img_path):
     pca_img = Image.open(pca_img_path)
     st.subheader("PCA plot of node behavior")
-    st.image(pca_img, use_column_width=True)
+    st.image(pca_img, use_container_width=True)
 else:
     st.warning(f"PCA plot niet gevonden voor {selected_machine}")
 
@@ -96,14 +103,14 @@ selected_node = st.selectbox("Kies node:", node_options,key = 'test')
 img_path = f"combined/clusters/{selected_machine}/pca_cluster_{selected_node}.png"
 
 if os.path.exists(img_path):
-    st.image(Image.open(img_path), caption=f'Clustering per node {selected_node}', use_column_width=True)
+    st.image(Image.open(img_path), caption=f'Clustering per node {selected_node}', use_container_width=True)
 else:
     st.warning(f"Afbeelding niet gevonden: {img_path}")
 
 clus_path = f"combined/Timeline/{selected_machine}/Timeline_clusters_{selected_node}.png"
 
 if os.path.exists(clus_path):
-    st.image(Image.open(clus_path), caption=f'Timeline per node {selected_node}', use_column_width=True)
+    st.image(Image.open(clus_path), caption=f'Timeline per node {selected_node}', use_container_width=True)
 else:
     st.warning(f"Image not found: {clus_path}")  
 
@@ -126,13 +133,11 @@ st.dataframe(vms)
 
 
 st.header(f'Energy overview per cluster')
-
-
 energy_img_path = f"combined/cpu_energy/energy_plot_{selected_machine}.png"
 if os.path.exists(energy_img_path):
     energy_img = Image.open(energy_img_path)
     st.subheader("Energy (Watt) per cluster ")
-    st.image(energy_img, use_column_width=True)
+    st.image(energy_img, use_container_width=True)
 else:
     st.warning(f"Energy plot not found for {selected_machine}")
 
@@ -141,6 +146,6 @@ cpu_img_path = f"combined/cpu_energy/cpu_plot_{selected_machine}.png"
 if os.path.exists(cpu_img_path):
     cpu_img = Image.open(cpu_img_path)
     st.subheader("CPU load (%) per cluster ")
-    st.image(cpu_img, use_column_width=True)
+    st.image(cpu_img, use_container_width=True)
 else:
     st.warning(f"CPU plot not found for {selected_machine}")
