@@ -87,10 +87,11 @@ else:
     st.warning(f"PCA plot niet gevonden voor {selected_machine}")
 
 
+# ---------- Clusters
 
 st.subheader(f'Clusters')
 node_options = sorted(available_nodes[selected_machine])
-selected_node = st.selectbox("Kies node:", node_options)
+selected_node = st.selectbox("Kies node:", node_options,key = 'test')
 
 img_path = f"combined/clusters/{selected_machine}/pca_cluster_{selected_node}.png"
 
@@ -102,7 +103,7 @@ else:
 clus_path = f"combined/Timeline/{selected_machine}/Timeline_clusters_{selected_node}.png"
 
 if os.path.exists(clus_path):
-    st.image(Image.open(clus_path), caption=f'Clustering per node {selected_node}', use_column_width=True)
+    st.image(Image.open(clus_path), caption=f'Timeline per node {selected_node}', use_column_width=True)
 else:
     st.warning(f"Image not found: {clus_path}")  
 
