@@ -1,27 +1,22 @@
+Machine type: b8994569
+
 === Cluster 0 ===
-cpu_usage_percent: min=1.14, max=92.24, mean=23.32
-scaphandre_power_total_watts: min=115.42, max=325.23, mean=230.27
-ipmi_system_power_watts: min=116.67, max=343.33, mean=256.67
-rapl_power_total_watts: min=109.33, max=325.19, mean=230.27
-scaphandre_power_total_watts: min=115.42, max=325.23, mean=230.27
+cpu_usage_percent: min=0.00, max=93.51, mean=12.77
+scaphandre_power_total_watts: min=29.38, max=336.33, mean=111.09
+ipmi_system_power_watts: min=46.67, max=721.67, mean=146.93
+rapl_power_total_watts: min=27.55, max=336.28, mean=112.74
+scaphandre_power_total_watts: min=29.38, max=336.33, mean=111.09
 
 === Cluster 1 ===
-cpu_usage_percent: min=0.00, max=36.88, mean=0.23
-scaphandre_power_total_watts: min=29.38, max=182.32, mean=43.39
-ipmi_system_power_watts: min=46.67, max=216.67, mean=72.16
-rapl_power_total_watts: min=1.22, max=192.05, mean=43.11
-scaphandre_power_total_watts: min=29.38, max=182.32, mean=43.39
+cpu_usage_percent: min=0.00, max=93.07, mean=22.90
+scaphandre_power_total_watts: min=31.86, max=330.34, mean=144.09
+ipmi_system_power_watts: min=50.00, max=393.33, mean=188.96
+rapl_power_total_watts: min=1.22, max=330.34, mean=164.27
+scaphandre_power_total_watts: min=31.86, max=330.34, mean=144.09
 
 === Cluster 2 ===
-cpu_usage_percent: min=8.57, max=94.36, mean=63.46
-scaphandre_power_total_watts: min=181.12, max=181.12, mean=181.12
-ipmi_system_power_watts: min=198.33, max=580.00, mean=358.35
-rapl_power_total_watts: min=158.59, max=331.97, mean=306.85
-scaphandre_power_total_watts: min=181.12, max=181.12, mean=181.12
-
-=== Cluster 3 ===
-cpu_usage_percent: min=16.30, max=92.94, mean=53.16
-scaphandre_power_total_watts: min=230.45, max=336.33, mean=306.93
-ipmi_system_power_watts: min=245.00, max=721.67, mean=359.24
-rapl_power_total_watts: min=230.61, max=336.28, mean=306.94
-scaphandre_power_total_watts: min=230.45, max=336.33, mean=306.93
+cpu_usage_percent: min=0.00, max=94.36, mean=28.99
+scaphandre_power_total_watts: min=32.76, max=324.98, mean=93.39
+ipmi_system_power_watts: min=46.67, max=398.33, mean=202.99
+rapl_power_total_watts: min=25.75, max=331.97, mean=164.07
+scaphandre_power_total_watts: min=32.76, max=324.98, mean=93.39
