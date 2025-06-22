@@ -43,9 +43,11 @@ overview = f'combined/Statistics/summary_architectures.csv'
 if os.path.exists(overview):
     view = pd.read_csv(overview, index_col=0)
     st.subheader("Overview of the dataset")
-    st.bar_chart(view)
+    st.dataframe(view)
 else:
-    st.warning(f"Outliers data niet gevonden voor {selected_machine}")
+    st.warning(f"Table not found")
+
+
 selected_machine = st.selectbox("Choose the machine type you want to analyse:", dataset_names)
 
 st.subheader(f'ipmi_system_power_watts described (Watt)')
