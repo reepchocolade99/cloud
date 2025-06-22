@@ -47,7 +47,7 @@ if os.path.exists(overview):
 else:
     st.warning(f"Table not found")
 
-
+# ---------- Power
 selected_machine = st.selectbox("Choose the machine type you want to analyse:", dataset_names)
 
 st.subheader(f'ipmi_system_power_watts described (Watt)')
@@ -67,8 +67,6 @@ if os.path.exists(img_path):
 else:
     st.warning(f"Image not found: {img_path}")
 
-
-
 outliers_path = f"combined/outliers/outlier_{selected_machine}.csv"
 if os.path.exists(outliers_path):
     outliers = pd.read_csv(outliers_path, index_col=0)
@@ -77,7 +75,7 @@ if os.path.exists(outliers_path):
 else:
     st.warning(f"Outliers data niet gevonden voor {selected_machine}")
 
-# Toon power distribution plot (PNG)
+
 power_img_path = f"combined/Statistics/power_distribution_per_node_{selected_machine}.png"
 if os.path.exists(power_img_path):
     power_img = Image.open(power_img_path)
@@ -86,7 +84,7 @@ if os.path.exists(power_img_path):
 else:
     st.warning(f"Power distribution plot niet gevonden voor {selected_machine}")
 
-# Toon PCA plot (PNG)
+# ---------- PCA
 pca_img_path = f"combined/pca/plot_hourly_nodes_{selected_machine}.png"
 if os.path.exists(pca_img_path):
     pca_img = Image.open(pca_img_path)
@@ -103,18 +101,21 @@ node_options = sorted(available_nodes[selected_machine])
 selected_node = st.selectbox("Kies node:", node_options,key = 'test')
 
 img_path = f"combined/clusters/{selected_machine}/pca_cluster_{selected_node}.png"
+clus_path = f"combined/Timeline/{selected_machine}/Timeline_clusters__{selected_node}.png"
 
-if os.path.exists(img_path):
-    st.image(Image.open(img_path), caption=f'Clustering per node {selected_node}', use_container_width=True)
-else:
-    st.warning(f"Afbeelding niet gevonden: {img_path}")
+col1, col2 = st.columns(2)
+with col1:
+    if os.path.exists(img_path):
+        st.image(Image.open(img_path), caption=f'Clustering per node {selected_node}', use_container_width=True)
+    else:
+        st.warning(f"Image not found: {img_path}")
 
-clus_path = f"combined/Timeline/{selected_machine}/Timeline_clusters_{selected_node}.png"
-
-if os.path.exists(clus_path):
-    st.image(Image.open(clus_path), caption=f'Timeline per node {selected_node}', use_container_width=True)
-else:
-    st.warning(f"Image not found: {clus_path}")  
+with col2:
+    if os.path.exists(clus_path):
+        st.image(Image.open(clus_path), caption=f'Timeline per node {selected_node}', use_container_width=True)
+    else:
+        st.warning(f"Image not gound: {clus_path}")
+  
 
 st.header(f'Distribution of clusters')
 distribution = pd.read_csv(f'combined/clusters/outlier_{selected_machine}.csv')
