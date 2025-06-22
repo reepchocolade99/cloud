@@ -1,7 +1,7 @@
-Architecture,Hosts (total=137),Virtual Machines (total=603),Cpus Cores (total = 19797.0),Memory (total=47344180.0),Period,Interval,Tuples (total=18072598)
-Lenovo_SR630,5,3,94.0,454144.0,120 days 23:57:00,3 minutes,290400
-Lenovo_SD530,20,46,4416.0,8740000.0,120 days 23:57:00,3 minutes,1120094
-Lenovo_SR630_V2,71,462,11377.0,30497500.0,120 days 23:57:00,3 minutes,13788115
-Dell_C6420,8,20,630.0,1155000.0,120 days 23:57:00,3 minutes,969514
-Lenovo_SR650,21,22,1024.0,2079536.0,120 days 23:57:00,3 minutes,1272641
-Fujitsu_PRIMERGY_BX924,12,50,2256.0,4418000.0,120 days 23:57:00,3 minutes,631834
+Architecture,Hosts (total=137),Virtual Machines (total=603),Cpus Cores (total = 19797.0),Memory GB (total=46234.550),Period,Interval,Tuples (total=18072598)
+Lenovo_SR630,5,3,94.0,443.5,120 days 23:57:00,3 minutes,290400
+Lenovo_SD530,20,46,4416.0,8535.156,120 days 23:57:00,3 minutes,1120094
+Lenovo_SR630_V2,71,462,11377.0,29782.715,120 days 23:57:00,3 minutes,13788115
+Dell_C6420,8,20,630.0,1127.93,120 days 23:57:00,3 minutes,969514
+Lenovo_SR650,21,22,1024.0,2030.797,120 days 23:57:00,3 minutes,1272641
+Fujitsu_PRIMERGY_BX924,12,50,2256.0,4314.453,120 days 23:57:00,3 minutes,631834
