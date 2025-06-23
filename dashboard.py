@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 import os
 import pandas as pd
+import plotly.express as px
 
 st.set_page_config(layout="wide")
 
@@ -120,9 +121,21 @@ with col2:
 distribution_path = f'combined/clusters/outlier_{selected_machine}.csv'
 if os.path.exists(distribution_path):
     distribution = pd.read_csv(distribution_path, index_col=0)
+    distribution.index.name = "Node"  # Set index as 'Node'
 
-    st.subheader("Distribution line chart")
-    st.line_chart(distribution)
+    st.subheader("Distribution per Node")
+
+    fig = px.line(
+        distribution,
+        title=f"Measurement distribution for {selected_machine}",
+        labels={
+            "index": "Node",           
+            "value": "Measurements",   
+            "variable": "Cluster" 
+        }
+    )
+
+    st.plotly_chart(fig)
 else:
     st.warning(f"Distribution data not found for {selected_machine}")
 
@@ -141,20 +154,13 @@ st.dataframe(vms)
 
 
 
-st.header(f'Energy overview per cluster')
-energy_img_path = f"combined/cpu_energy/energy_plot_{selected_machine}.png"
-if os.path.exists(energy_img_path):
-    energy_img = Image.open(energy_img_path)
-    st.subheader("Energy (Watt) per cluster ")
-    st.image(energy_img, use_container_width=True)
-else:
-    st.warning(f"Energy plot not found for {selected_machine}")
+st.header(f'Energy efficientcy per cluster per hour')
 
-st.header(f'Cpu overview per cluster')
-cpu_img_path = f"combined/cpu_energy/cpu_plot_{selected_machine}.png"
-if os.path.exists(cpu_img_path):
-    cpu_img = Image.open(cpu_img_path)
-    st.subheader("CPU load (%) per cluster ")
-    st.image(cpu_img, use_container_width=True)
-else:
-    st.warning(f"CPU plot not found for {selected_machine}")
+for cluster_id in [0, 1, 2]:
+    image_path = f'combined/efficiency/efficiency_cluster_{cluster_id}_{selected_machine}.png'
+    if os.path.exists(image_path):
+        st.subheader(f'Energy efficiency cluster {cluster_id}')
+        energy_img = Image.open(image_path)
+        st.image(energy_img, use_container_width=True)
+    else:
+        st.warning(f'Image not found for cluster {cluster_id} - {selected_machine}')
