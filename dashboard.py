@@ -186,3 +186,15 @@ with col2:
         st.image(Image.open(cpu_path), caption=f'Cpu Load during the day from {selected_node}', use_container_width=True)
     else:
         st.warning(f"Image not found: {cpu_path}")
+
+st.header('Cluster Heatmap')
+
+selected_cluster = st.selectbox('Choose a cluster', options=[0, 1, 2])
+image_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
+
+if os.path.exists(image_path):
+    st.subheader(f'Energy efficiency cluster {selected_cluster}')
+    energy_img = Image.open(image_path)
+    st.image(energy_img, use_container_width=True)
+else:
+    st.warning(f'Image not found for cluster {selected_cluster} - {selected_machine}')
