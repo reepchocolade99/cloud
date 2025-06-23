@@ -99,7 +99,7 @@ else:
 
 st.subheader(f'Clusters')
 node_options = sorted(available_nodes[selected_machine])
-selected_node = st.selectbox("Kies node:", node_options,key = 'test')
+selected_node = st.selectbox("Choose node:", node_options,key = 'test')
 
 img_path = f"combined/clusters/{selected_machine}/pca_cluster_{selected_node}.png"
 clus_path = f"combined/Timeline/{selected_machine}/Timeline_clusters__{selected_node}.png"
@@ -164,3 +164,25 @@ for cluster_id in [0, 1, 2]:
         st.image(energy_img, use_container_width=True)
     else:
         st.warning(f'Image not found for cluster {cluster_id} - {selected_machine}')
+
+
+
+st.subheader(f'Energy & CPU load per hour per node')
+node_options = sorted(available_nodes[selected_machine])
+selected_node = st.selectbox("Choose node:", node_options,key = 'test2')
+
+energy_path = f"combined/results/plots/{selected_machine}/{selected_node}_energy_plot.png"
+cpu_path = f"combined/results/plots/{selected_machine}/{selected_node}_cpu_plot.png"
+
+col1, col2 = st.columns(2)
+with col1:
+    if os.path.exists(img_path):
+        st.image(Image.open(energy_path), caption=f'Energy use during the day from {selected_node}', use_container_width=True)
+    else:
+        st.warning(f"Image not found: {img_path}")
+
+with col2:
+    if os.path.exists(clus_path):
+        st.image(Image.open(cpu_path), caption=f'Cpu Load during the day from {selected_node}', use_container_width=True)
+    else:
+        st.warning(f"Image not gound: {clus_path}")
