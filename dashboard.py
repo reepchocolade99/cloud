@@ -117,14 +117,14 @@ with col2:
         st.warning(f"Image not gound: {clus_path}")
   
 
-distribution_path = pd.read_csv(f'combined/clusters/outlier_{selected_machine}.csv')
+distribution_path = f'combined/clusters/outlier_{selected_machine}.csv'
 if os.path.exists(distribution_path):
-    distribution = pd.read_csv(outliers_path, index_col=0)
-    st.subheader("Distribution bar chart")
-    st.line_chart(outliers)
-else:
-    st.warning(f"Distibution data not found for {selected_machine}")
+    distribution = pd.read_csv(distribution_path, index_col=0)
 
+    st.subheader("Distribution line chart")
+    st.line_chart(distribution)
+else:
+    st.warning(f"Distribution data not found for {selected_machine}")
 
 
 with open(f'combined/clusters/clusters_{selected_machine}', 'r') as file:
