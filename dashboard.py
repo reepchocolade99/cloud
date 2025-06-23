@@ -193,7 +193,7 @@ selected_cluster = st.selectbox('Choose a cluster', options=[0, 1, 2])
 cluster_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
 
 if os.path.exists(image_path):
-    st.subheader(f'Heatmap efficiency{cluster_path}')
+    st.subheader(f'Heatmap efficiency')
     energy_img = Image.open(cluster_path)
     st.image(cluster_path, use_container_width=True)
 else:
