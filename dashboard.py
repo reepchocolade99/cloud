@@ -176,13 +176,13 @@ cpu_path = f"combined/results/plots/{selected_machine}/{selected_node}_cpu_plot.
 
 col1, col2 = st.columns(2)
 with col1:
-    if os.path.exists(img_path):
+    if os.path.exists(energy_path):
         st.image(Image.open(energy_path), caption=f'Energy use during the day from {selected_node}', use_container_width=True)
     else:
-        st.warning(f"Image not found: {img_path}")
+        st.warning(f"Image not found: {energy_path}")
 
 with col2:
-    if os.path.exists(clus_path):
+    if os.path.exists(cpu_path):
         st.image(Image.open(cpu_path), caption=f'Cpu Load during the day from {selected_node}', use_container_width=True)
     else:
-        st.warning(f"Image not gound: {clus_path}")
+        st.warning(f"Image not found: {cpu_path}")
