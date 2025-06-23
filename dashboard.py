@@ -152,7 +152,7 @@ st.header(f'Virtual machines')
 vms = pd.read_csv(f'combined/vms/vms_{selected_machine}.csv')
 st.dataframe(vms)
 
-
+print('test')
 
 st.header(f'Energy efficientcy per cluster per hour')
 
@@ -190,10 +190,10 @@ with col2:
 st.header('Cluster Heatmap')
 
 selected_cluster = st.selectbox('Choose a cluster', options=[0, 1, 2])
-image_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
+cluster_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
 
 if os.path.exists(image_path):
-    st.subheader(f'Energy efficiency cluster {selected_cluster}')
+    st.subheader(f'Heatmap efficiency{cluster_path}')
     energy_img = Image.open(image_path)
     st.image(energy_img, use_container_width=True)
 else:
