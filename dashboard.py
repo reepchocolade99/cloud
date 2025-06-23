@@ -6,15 +6,14 @@ import plotly.express as px
 
 st.set_page_config(layout="wide")
 
-dataset_names = [
-    "a97fe24e",
-    "b8994569",
-    "a6177608",
-    "f6fec747",
-    "5f67cb23",
-    "11cdff15"
-]
-
+dataset_names = {
+    "11cdff15": "Fujitsu PRIMERGY BX924 S4 (Blade Server)",
+    "b8994569": "Lenovo ThinkSystem SD530 (Chassis Server)",
+    "a97fe24e": "Lenovo ThinkSystem SR630 (Rack Server)",
+    "5f67cb23": "Lenovo ThinkSystem SR650 (Rack Server)",
+    "f6fec747": "Dell PowerEdge C6420 (Chassis Server)",
+    "a6177608": "Lenovo ThinkSystem SR630 V2 (Rack Server)"
+}
 
 
 available_nodes = {
@@ -49,7 +48,9 @@ else:
     st.warning(f"Table not found")
 
 # ---------- Power
-selected_machine = st.selectbox("Choose the machine type you want to analyse:", dataset_names)
+selected_name = st.selectbox("Choose the machine type you want to analyse:", list(dataset_names.values()))
+selected_machine = [k for k, v in dataset_names.items() if v == selected_name][0]
+
 
 st.subheader(f'ipmi_system_power_watts described (Watt)')
 descriptive = pd.read_csv(f'combined/descriptive/descriptive_{selected_machine}.csv')
