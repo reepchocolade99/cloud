@@ -194,7 +194,7 @@ cluster_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluste
 
 if os.path.exists(image_path):
     st.subheader(f'Heatmap efficiency{cluster_path}')
-    energy_img = Image.open(image_path)
-    st.image(energy_img, use_container_width=True)
+    energy_img = Image.open(cluster_path)
+    st.image(cluster_path, use_container_width=True)
 else:
     st.warning(f'Image not found for cluster {selected_cluster} - {selected_machine}')
