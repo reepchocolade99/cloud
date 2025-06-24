@@ -212,7 +212,7 @@ cluster_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluste
 selected_cluster = st.selectbox('Choose a cluster', options=[0, 1, 2])
 
 # Check of machine_type eindigt op '608'
-if selected_machine.endswith('608'):
+if selected_machine == 'a6177608':
     st.markdown(
  f" **Note:** Because {selected_machine} contains many nodes, we show a _table_ instead of a _heatmap_ to avoid memory problems."
     )
