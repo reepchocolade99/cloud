@@ -205,13 +205,9 @@ with col2:
 
 st.header('Cluster Heatmap')
 
-selected_cluster = st.selectbox('Choose a cluster', options=[0, 1, 2])
-cluster_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
-
-
 selected_cluster = st.selectbox('Choose a cluster (heatmap/table):', options=[0, 1, 2], key='heatmap_cluster_select')
-
 cluster_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
+
 
 if selected_machine == 'a6177608':
     st.markdown(
