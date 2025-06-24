@@ -84,10 +84,6 @@ if not subset.empty:
 else:
     st.warning(f"No boxplot data available for node {selected_node}")
 
-ax.set_title(f"Boxplot IPMI Power for node {selected_node}")
-ax.set_ylabel('IPMI System Power (Watt)')
-st.pyplot(fig)
-
 outliers_path = f"combined/outliers/outlier_{selected_machine}.csv"
 if os.path.exists(outliers_path):
     outliers = pd.read_csv(outliers_path, index_col=0)
@@ -216,5 +212,15 @@ if os.path.exists(image_path):
     st.subheader(f'Heatmap efficiency {selected_name} (Cluster {selected_cluster})')
     energy_img = Image.open(cluster_path)
     st.image(cluster_path, use_container_width=True)
+else:
+    st.warning(f'Image not found for cluster {selected_cluster} - {selected_machine}')
+
+
+score_path = f'combined/results/total_{selected_machine}.png'
+
+if os.path.exists(score_path):
+    st.subheader(f'Heatmap efficiency {selected_name} (Cluster {selected_cluster})')
+    energy_img = Image.open(score_path)
+    st.image(score_path, use_container_width=True)
 else:
     st.warning(f'Image not found for cluster {selected_cluster} - {selected_machine}')
