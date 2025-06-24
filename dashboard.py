@@ -59,10 +59,11 @@ st.dataframe(descriptive)
 
 # Boxplot
 
-node_options = sorted(available_nodes[selected_machine])
-selected_node = st.selectbox("Choose node:", node_options)
+
 boxplot_stats = pd.read_csv(f'combined/boxplots/boxplot_stats_{selected_machine}.csv')
-stats = boxplot_stats[boxplot_stats['node'] == selected_node].iloc[0]
+node_options = sorted(set(available_nodes[selected_machine]) & set(boxplot_stats['node']))
+selected_node = st.selectbox("Choose node:", node_options)
+
 
 fig, ax = plt.subplots(figsize=(6, 4))
 ax.bxp([{
