@@ -7,12 +7,12 @@ import plotly.express as px
 st.set_page_config(layout="wide")
 
 dataset_names = {
-    "11cdff15": "Fujitsu PRIMERGY BX924 S4 (Blade Server)",
-    "b8994569": "Lenovo ThinkSystem SD530 (Chassis Server)",
-    "a97fe24e": "Lenovo ThinkSystem SR630 (Rack Server)",
-    "5f67cb23": "Lenovo ThinkSystem SR650 (Rack Server)",
-    "f6fec747": "Dell PowerEdge C6420 (Chassis Server)",
-    "a6177608": "Lenovo ThinkSystem SR630 V2 (Rack Server)"
+    "11cdff15": "Fujitsu PRIMERGY BX924 S4",
+    "b8994569": "Lenovo ThinkSystem SD530",
+    "a97fe24e": "Lenovo ThinkSystem SR630",
+    "5f67cb23": "Lenovo ThinkSystem SR650",
+    "f6fec747": "Dell PowerEdge C6420",
+    "a6177608": "Lenovo ThinkSystem SR630 V2 "
 }
 
 
@@ -64,7 +64,7 @@ selected_node = st.selectbox("Choose node:", node_options)
 img_path = f"combined/boxplots/{selected_machine}/{selected_node}.png"
 
 if os.path.exists(img_path):
-    st.subheader(f'Boxplot for {selected_node}')
+    st.subheader(f'Boxplot for {selected_name}')
     st.image(Image.open(img_path), caption=f'Boxplot per node {selected_node}', use_container_width=True)
 else:
     st.warning(f"Image not found: {img_path}")
@@ -93,7 +93,7 @@ if os.path.exists(pca_img_path):
     st.subheader("PCA plot of node behavior")
     st.image(pca_img, use_container_width=True)
 else:
-    st.warning(f"PCA plot niet gevonden voor {selected_machine}")
+    st.warning(f"PCA plot niet gevonden voor {selected_name}")
 
 
 # ---------- Clusters
@@ -128,7 +128,7 @@ if os.path.exists(distribution_path):
 
     fig = px.line(
         distribution,
-        title=f"Measurement distribution for {selected_machine}",
+        title=f"Measurement distribution for {selected_name}",
         labels={
             "index": "Node",           
             "value": "Measurements",   
@@ -138,7 +138,7 @@ if os.path.exists(distribution_path):
 
     st.plotly_chart(fig)
 else:
-    st.warning(f"Distribution data not found for {selected_machine}")
+    st.warning(f"Distribution data not found for {selected_name}")
 
 
 with open(f'combined/clusters/clusters_{selected_machine}', 'r') as file:
@@ -164,7 +164,7 @@ for cluster_id in [0, 1, 2]:
         energy_img = Image.open(image_path)
         st.image(energy_img, use_container_width=True)
     else:
-        st.warning(f'Image not found for cluster {cluster_id} - {selected_machine}')
+        st.warning(f'Image not found for cluster {cluster_id} - {selected_name}')
 
 
 
@@ -194,7 +194,7 @@ selected_cluster = st.selectbox('Choose a cluster', options=[0, 1, 2])
 cluster_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
 
 if os.path.exists(image_path):
-    st.subheader(f'Heatmap efficiency')
+    st.subheader(f'Heatmap efficiency {selected_name} (Cluster {selected_cluster})')
     energy_img = Image.open(cluster_path)
     st.image(cluster_path, use_container_width=True)
 else:
