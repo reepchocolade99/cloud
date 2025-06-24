@@ -49,7 +49,7 @@ else:
     st.warning(f"Table not found")
 
 # ---------- Power
-selected_name = st.selectbox("Choose the machine type you want to analyse:", list(dataset_names.values()))
+selected_name = st.selectbox("Choose the machine type you want to analyse:", list(dataset_names.values()), key="machine_type_select")
 selected_machine = [k for k, v in dataset_names.items() if v == selected_name][0]
 
 
@@ -62,7 +62,7 @@ st.dataframe(descriptive)
 
 boxplot_stats = pd.read_csv(f'combined/boxplots/boxplot_stats_{selected_machine}.csv')
 node_options = sorted(set(available_nodes[selected_machine]) & set(boxplot_stats['node']))
-selected_node = st.selectbox("Choose node:", node_options)
+selected_node = st.selectbox("Choose node (boxplot):", node_options, key="boxplot_node_select")
 
 
 subset = boxplot_stats[boxplot_stats['node'] == selected_node]
@@ -115,7 +115,7 @@ else:
 
 st.subheader(f'Clusters')
 node_options = sorted(available_nodes[selected_machine])
-selected_node = st.selectbox("Choose node:", node_options,key = 'test')
+selected_node_cluster = st.selectbox("Choose node (cluster):", node_options, key="cluster_node_select")
 
 img_path = f"combined/clusters/{selected_machine}/pca_cluster_{selected_node}.png"
 clus_path = f"combined/Timeline/{selected_machine}/Timeline_clusters__{selected_node}.png"
@@ -168,7 +168,7 @@ st.header(f'Virtual machines')
 vms = pd.read_csv(f'combined/vms/vms_{selected_machine}.csv')
 st.dataframe(vms)
 
-print('test')
+
 
 st.header(f'Energy efficientcy per cluster per hour')
 
@@ -185,7 +185,7 @@ for cluster_id in [0, 1, 2]:
 
 st.subheader(f'Energy & CPU load per hour per node')
 node_options = sorted(available_nodes[selected_machine])
-selected_node = st.selectbox("Choose node:", node_options,key = 'test2')
+selected_node_energy = st.selectbox("Choose node (energy/cpu):", node_options, key="energy_cpu_node_select")
 
 energy_path = f"combined/results/plots/{selected_machine}/{selected_node}_energy_plot.png"
 cpu_path = f"combined/results/plots/{selected_machine}/{selected_node}_cpu_plot.png"
@@ -209,12 +209,13 @@ selected_cluster = st.selectbox('Choose a cluster', options=[0, 1, 2])
 cluster_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
 
 
-selected_cluster = st.selectbox('Choose a cluster', options=[0, 1, 2])
+selected_cluster = st.selectbox('Choose a cluster (heatmap/table):', options=[0, 1, 2], key='heatmap_cluster_select')
 
-# Check of machine_type eindigt op '608'
+cluster_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
+
 if selected_machine == 'a6177608':
     st.markdown(
- f" **Note:** Because {selected_machine} contains many nodes, we show a _table_ instead of a _heatmap_ to avoid memory problems."
+        f"**Note:** Because {selected_machine} contains many nodes, we show a _table_ instead of a _heatmap_ to avoid memory problems."
     )
 
     csv_path = f'combined/efficiency/table/{selected_machine}_cluster{selected_cluster}_efficiency.csv'
@@ -226,7 +227,7 @@ if selected_machine == 'a6177608':
     else:
         st.warning(f'Table not found for cluster {selected_cluster} - {selected_machine}')
 else:
-    if os.path.exists(image_path):
+    if os.path.exists(cluster_path):
         st.subheader(f'Heatmap efficiency {selected_name} (Cluster {selected_cluster})')
         energy_img = Image.open(cluster_path)
         st.image(energy_img, use_container_width=True)
