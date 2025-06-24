@@ -60,14 +60,25 @@ st.dataframe(descriptive)
 
 node_options = sorted(available_nodes[selected_machine])
 selected_node = st.selectbox("Choose node:", node_options)
+boxplot_stats = pd.read_csv('boxplot_stats.csv')
 
-img_path = f"combined/boxplots/{selected_machine}/{selected_node}.png"
+selected_node = st.selectbox("Select node", boxplot_stats['node'].unique())
 
-if os.path.exists(img_path):
-    st.subheader(f'Boxplot for {selected_name}')
-    st.image(Image.open(img_path), caption=f'Boxplot per node {selected_node}', use_container_width=True)
-else:
-    st.warning(f"Image not found: {img_path}")
+stats = boxplot_stats[boxplot_stats['node'] == selected_node].iloc[0]
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.bxp([{
+    'med': stats['median'],
+    'q1': stats['q1'],
+    'q3': stats['q3'],
+    'whislo': stats['lower_whisker'], 
+    'whishi': stats['upper_whisker'],  
+    'fliers': [] 
+}], showfliers=False)
+
+ax.set_title(f"Boxplot IPMI Power for node {selected_node}")
+ax.set_ylabel('IPMI System Power (Watt)')
+st.pyplot(fig)
 
 outliers_path = f"combined/outliers/outlier_{selected_machine}.csv"
 if os.path.exists(outliers_path):
