@@ -206,27 +206,32 @@ with col2:
 st.header('Cluster Heatmap')
 
 selected_cluster = st.selectbox('Choose a cluster (heatmap/table):', options=[0, 1, 2], key='heatmap_cluster_select')
-cluster_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
+heatmap_path = f'combined/efficiency/heatmap/{selected_machine}_{selected_cluster}_cluster_efficiency_summary.png'
 
 
 if selected_machine == 'a6177608':
     st.markdown(
         f"**Note:** Because {selected_machine} contains many nodes, we show a _table_ instead of a _heatmap_ to avoid memory problems."
     )
-
     csv_path = f'combined/efficiency/table/{selected_machine}_cluster{selected_cluster}_efficiency.csv'
 
     if os.path.exists(csv_path):
         st.subheader(f'Table efficiency {selected_name} (Cluster {selected_cluster})')
         df_table = pd.read_csv(csv_path, index_col=0)
-        st.dataframe(df_table.style.format("{:.1f}"), use_container_width=True)
+        
+        df_table = df_table.fillna(0)
+        num_cols = df_table.select_dtypes(include=['number']).columns
+        format_dict = {col: "{:.1f}" for col in num_cols}
+        
+        st.dataframe(df_table.style.format(format_dict), use_container_width=True)
     else:
         st.warning(f'Table not found for cluster {selected_cluster} - {selected_machine}')
+
 else:
-    if os.path.exists(cluster_path):
+    if os.path.exists(heatmap_path):
         st.subheader(f'Heatmap efficiency {selected_name} (Cluster {selected_cluster})')
-        energy_img = Image.open(cluster_path)
-        st.image(energy_img, use_container_width=True)
+        heat_img = Image.open(heatmap_path)
+        st.image(heat_img, use_container_width=True)
     else:
         st.warning(f'Image not found for cluster {selected_cluster} - {selected_machine}')
 
