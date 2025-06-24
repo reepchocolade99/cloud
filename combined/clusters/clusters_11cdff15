@@ -1,22 +1,22 @@
 Machine type: 11cdff15
 
 === Cluster 0 ===
-cpu_usage_percent: min=0.01, max=79.58, mean=15.41
-scaphandre_power_total_watts: min=36.02, max=239.94, mean=100.32
+cpu_usage_percent: min=0.01, max=79.58, mean=15.42
+scaphandre_power_total_watts: min=36.02, max=239.94, mean=100.31
 ipmi_system_power_watts: min=64.00, max=333.33, mean=144.89
-rapl_power_total_watts: min=25.22, max=245.16, mean=101.80
-scaphandre_power_total_watts: min=36.02, max=239.94, mean=100.32
+rapl_power_total_watts: min=25.22, max=245.16, mean=101.79
+scaphandre_power_total_watts: min=36.02, max=239.94, mean=100.31
 
 === Cluster 1 ===
-cpu_usage_percent: min=0.04, max=82.91, mean=10.08
-scaphandre_power_total_watts: min=35.88, max=667.73, mean=84.44
-ipmi_system_power_watts: min=64.00, max=320.00, mean=118.35
-rapl_power_total_watts: min=34.62, max=247.55, mean=79.06
-scaphandre_power_total_watts: min=35.88, max=667.73, mean=84.44
+cpu_usage_percent: min=0.04, max=82.91, mean=10.48
+scaphandre_power_total_watts: min=35.88, max=667.73, mean=83.22
+ipmi_system_power_watts: min=64.00, max=326.67, mean=119.82
+rapl_power_total_watts: min=34.62, max=247.55, mean=80.01
+scaphandre_power_total_watts: min=35.88, max=667.73, mean=83.22
 
 === Cluster 2 ===
-cpu_usage_percent: min=0.06, max=79.73, mean=33.16
-scaphandre_power_total_watts: min=37.13, max=243.85, mean=195.57
-ipmi_system_power_watts: min=67.33, max=349.33, mean=209.35
-rapl_power_total_watts: min=39.86, max=730.49, mean=151.50
-scaphandre_power_total_watts: min=37.13, max=243.85, mean=195.57
+cpu_usage_percent: min=0.06, max=76.83, mean=32.27
+scaphandre_power_total_watts: min=37.13, max=243.85, mean=164.48
+ipmi_system_power_watts: min=67.33, max=349.33, mean=206.13
+rapl_power_total_watts: min=39.86, max=730.49, mean=149.32
+scaphandre_power_total_watts: min=37.13, max=243.85, mean=164.48

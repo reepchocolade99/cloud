@@ -1,4 +1,4 @@
 cluster,amount_unique_projects,amount_unique_users,total_vcpus,amount_nodes,amount_vm,projects,users
 0,1,1,1824.0,12,41,['43d3e415'],['0fb4c56f']
-1,1,1,1824.0,12,41,['43d3e415'],['0fb4c56f']
+1,1,1,1728.0,12,38,['43d3e415'],['0fb4c56f']
 2,1,1,336.0,12,8,['43d3e415'],['0fb4c56f']
