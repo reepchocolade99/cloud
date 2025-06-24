@@ -65,15 +65,24 @@ node_options = sorted(set(available_nodes[selected_machine]) & set(boxplot_stats
 selected_node = st.selectbox("Choose node:", node_options)
 
 
-fig, ax = plt.subplots(figsize=(6, 4))
-ax.bxp([{
-    'med': stats['median'],
-    'q1': stats['q1'],
-    'q3': stats['q3'],
-    'whislo': stats['lower_whisker'], 
-    'whishi': stats['upper_whisker'],  
-    'fliers': [] 
-}], showfliers=False)
+subset = boxplot_stats[boxplot_stats['node'] == selected_node]
+
+if not subset.empty:
+    stats = subset.iloc[0]
+    fig, ax = plt.subplots(figsize=(6, 4))
+    ax.bxp([{
+        'med': stats['median'],
+        'q1': stats['q1'],
+        'q3': stats['q3'],
+        'whislo': stats['lower_whisker'],
+        'whishi': stats['upper_whisker'],
+        'fliers': []
+    }], showfliers=False)
+    ax.set_title(f"Boxplot IPMI Power for node {selected_node}")
+    ax.set_ylabel('IPMI System Power (Watt)')
+    st.pyplot(fig)
+else:
+    st.warning(f"No boxplot data available for node {selected_node}")
 
 ax.set_title(f"Boxplot IPMI Power for node {selected_node}")
 ax.set_ylabel('IPMI System Power (Watt)')
