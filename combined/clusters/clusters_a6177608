@@ -1,0 +1,22 @@
+Machine type: a6177608
+
+=== Cluster 0 ===
+cpu_usage_percent: min=0.00, max=100.00, mean=1.97
+scaphandre_power_total_watts: min=127.55, max=553.72, mean=275.89
+ipmi_system_power_watts: min=270.00, max=887.50, mean=424.93
+rapl_power_total_watts: min=11.39, max=4032638.64, mean=276.92
+scaphandre_power_total_watts: min=127.55, max=553.72, mean=275.89
+
+=== Cluster 1 ===
+cpu_usage_percent: min=0.00, max=100.00, mean=6.14
+scaphandre_power_total_watts: min=2.06, max=593.19, mean=290.60
+ipmi_system_power_watts: min=336.67, max=880.00, mean=444.50
+rapl_power_total_watts: min=0.00, max=70193760.50, mean=419.81
+scaphandre_power_total_watts: min=2.06, max=593.19, mean=290.60
+
+=== Cluster 2 ===
+cpu_usage_percent: min=0.00, max=100.00, mean=6.43
+scaphandre_power_total_watts: min=2.34, max=373.42, mean=268.74
+ipmi_system_power_watts: min=335.83, max=860.00, mean=440.46
+rapl_power_total_watts: min=60.22, max=41746.23, mean=288.39
+scaphandre_power_total_watts: min=2.34, max=373.42, mean=268.74
